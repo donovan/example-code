@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<html>
+    <head>
+        <title>Read More Example</title>
+        <style type="text/css">
+            .more {
+                display: none;
+            }
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+            jQuery('a.show-more').click(function(){
+
+                    //console.log('we clicked show more!');
+                    htm = jQuery(this).parent().html();
+                    txt = jQuery(this).parent().text();
+                    //console.log("html = '" + htm + "' and text = '" + txt + "'");
+
+                    if (jQuery(this).parent().next().css('display') == 'none') {
+                        jQuery(this).parent().next().show();
+                        jQuery(this).replaceWith('<a class="show-more" href="">hide....</a>');
+                    } else {
+                        jQuery(this).parent().next().hide();
+                        jQuery(this).replaceWith('<a class="show-more" href="">show more....</a>');
+                    }
+
+                    return false;
+
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="content">
+            <p>this is the teaser when you click more the content expands <a class="show-more" href="">show more....</a></p>
+            <div class="more">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus augue nec urna lacinia convallis. Sed malesuada rhoncus purus, sit amet condimentum dui tincidunt non. Vivamus purus enim, vulputate et egestas sed, luctus sed urna. Vestibulum nec dui eget ligula consectetur pretium vel sit amet nunc. Aliquam erat volutpat. Vestibulum a urna justo. Quisque gravida semper nisl eu pulvinar. Nulla egestas sem lacinia risus feugiat mollis. Sed in aliquet arcu. Nam varius imperdiet augue, nec mollis lacus viverra sed. Praesent nec sapien est, sed vestibulum ante. Nam sed fermentum eros.</p>
+                <p>Suspendisse eget odio quam, eu pellentesque orci. Pellentesque eu risus lectus. In hac habitasse platea dictumst. Nulla sollicitudin enim non nunc tincidunt blandit. Integer erat nunc, elementum et dictum ac, vulputate at quam. Duis elementum varius consectetur. Sed ultrices dui eu felis varius euismod placerat leo accumsan. Nam eu enim enim. Sed et metus nulla. Nam ultrices sem nec risus auctor cursus. Duis in nunc turpis, non vestibulum diam. Donec cursus faucibus lacus vitae porttitor. In et aliquet dolor. Ut a velit id orci luctus varius vel id massa. Sed pretium, sapien nec placerat luctus, velit odio iaculis magna, a viverra tortor nunc a ante.</p>
+            </div>
+            <p>this is the second teaser, when you click on this link it should show the second show more block ... <a class="show-more" href="">show more....</a></p>
+            <div class="more">
+                <p>Vivamus adipiscing congue mattis. Integer aliquam lobortis dui at iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in dolor sem, non consequat diam. Fusce tempus posuere augue id consectetur. Vestibulum ultrices massa non arcu lacinia eu pretium turpis egestas. Vivamus non erat quis massa euismod elementum a a augue. Suspendisse adipiscing purus consectetur nisi venenatis volutpat. Nunc varius purus sit amet neque aliquam nec placerat tortor bibendum. Aliquam erat volutpat. Phasellus volutpat, odio at commodo lacinia, lacus lorem convallis leo, ac vehicula risus orci eu turpis.</p>
+            </div>
+            <p>this is the third teaser, when you click on this link it should show the second show more block ... <a class="show-more" href="">show more....</a></p>
+            <div class="more">
+                <p>Quisque ac tortor eros. Maecenas a dui a massa venenatis posuere. Sed eros mauris, volutpat non semper sed, lobortis a quam. Suspendisse potenti. Vivamus eget dui dolor. Nam euismod mauris ut ante hendrerit faucibus lobortis risus laoreet. Nulla quam augue, consectetur sed interdum et, tincidunt in neque. Vivamus bibendum nisi eu tortor sodales ut ullamcorper dolor vestibulum. Suspendisse accumsan, risus et laoreet mollis, leo metus suscipit tellus, sed laoreet leo purus id turpis. Vivamus diam enim, tristique at euismod ac, eleifend quis eros. Sed ut ante lorem, eget scelerisque dolor. Vestibulum hendrerit pretium nisi, eu ultricies ligula tincidunt molestie. Integer lobortis ornare arcu eu vulputate. Quisque venenatis, odio vitae hendrerit bibendum, massa dolor dignissim turpis, nec facilisis tellus magna a nulla.</p>
+            </div>
+        </div>
+    </body>
+</html>
