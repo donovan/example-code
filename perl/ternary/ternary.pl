@@ -19,3 +19,16 @@ my $y = 'y';
 my $zog = $x // $y;
 
 print "zog = $zog\n";
+
+my $a = undef;
+my $b = undef;
+my $c = undef;
+my $d = undef;
+my $e = 'i am an e and i exist!';;
+my $f = undef;
+my $g = undef;
+my $h = undef;
+
+my $letter = $a // $b // $c // $d // $e // $f // $g // $h;
+
+print "letter = $letter\n";
