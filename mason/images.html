@@ -1,0 +1,86 @@
+<%doc>
+    Put this file in your root and then call it like images.html?dir=/path/to/images/
+    It will show you the images
+</%doc>
+<%flags>
+    inherit => '/syshandler'
+</%flags>
+<%args>
+    $dir
+</%args>
+<%init>
+    # TODO sanitise $dir
+    my $pwd = $m->base_comp->source_dir;
+    my $target_dir = "$pwd$dir";
+
+    my @files = <$pwd$dir*>;
+
+    use Imager;
+    use File::Basename;
+
+    my $data = {};
+
+    foreach my $file (@files) {
+        next unless $file =~ m{ (:? jpe?g | png | gif ) \z }xmsi;
+        my $filename = fileparse( $file );
+        my $img = Imager->new;
+        $img->read(file => $file) or die "Cannot read: ", $img->errstr;
+        $data->{$filename}{path}   = $file;
+        $data->{$filename}{name}   = $filename;
+        $data->{$filename}{width}  = $img->getwidth;
+        $data->{$filename}{height} = $img->getheight;
+        $data->{$filename}{size}   = $img->getwidth * $img->getheight; # for sorting
+    }
+</%init>
+<html>
+    <head>
+        <style type="text/css">
+           table thead tr {
+                background-color: #000;
+                color: #fff;
+            }
+            table tbody tr:nth-child(odd) {
+                background-color: #ededed;
+            }
+            table tbody tr:nth-child(even) {
+                background-color: #fefefe;
+            }
+            table tbody tr {
+                border-bottom: 1px solid #ccc;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Images in <% $target_dir | h %></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        name
+                    </th>
+                    <th>
+                        width x height
+                    </th>
+                    <th>
+                        file
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+% foreach my $file (sort { $data->{$a}{height} <=> $data->{$b}{height} } keys %$data) {
+                <tr>
+                    <td>
+                        <% $file | h %>
+                    </td>
+                    <td>
+                        <% $data->{$file}{width} | h %> x <% $data->{$file}{height} | h %>
+                    </td>
+                    <td>
+                        <img src="<% $dir | h %><% $file | h %>" >
+                    </td>
+                </tr>
+% }
+            </tbody>
+        </table>
+    </body>
+</html>
