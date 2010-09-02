@@ -14,7 +14,8 @@ foreach my $element (@array) {
 }
 print "---------------------------------------\n";
 
-splice @array,-$pos,1,('<------', $array[-$pos]);
+#splice @array,-$pos,1,('<------', $array[-$pos]);
+splice @array,-$pos,0,('<------');
 
 foreach my $element (@array) {
     print "$element\n";
