@@ -9,3 +9,7 @@ if grep -q $1 $2; then
 else
     echo did not find the string $1 in file $2
 fi
+
+if ! grep -q $1 $2; then
+    echo did not find the string $1 in file $2
+fi
