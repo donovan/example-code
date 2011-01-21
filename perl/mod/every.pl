@@ -4,7 +4,7 @@ use warnings;
 use strict;
 
 my $start = 20;
-my $every = 5;
+my $every = shift;
 
 for my $num (1..100) {
     if ($num >= $start) {
