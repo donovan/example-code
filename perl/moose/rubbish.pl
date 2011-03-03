@@ -5,7 +5,6 @@ use warnings;
 use 5.010;
 
 use Trash;
-use Trash::Plastic;
 
 my @trash = (
     Trash->new( name => 'beer bottle',      type => 'glass',       size => 'small' ),

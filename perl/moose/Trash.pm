@@ -2,7 +2,7 @@ package Trash;
 
 use Moose;
 use 5.010;
-#use Module::Pluggable search_path => 'Trash', require => 1;
+use Module::Pluggable search_path => 'Trash', require => 1;
 
 has 'name', is => 'ro', isa => 'Str';
 has 'type', is => 'ro', isa => 'Str';
@@ -67,5 +67,7 @@ sub disposal_location {
         }
     }
 }
+
+__PACKAGE__->plugins;
 
 return 1;
