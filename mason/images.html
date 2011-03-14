@@ -67,7 +67,7 @@
                 </tr>
             </thead>
             <tbody>
-% foreach my $file (sort { $data->{$a}{height} <=> $data->{$b}{height} } keys %$data) {
+% foreach my $file (sort { $data->{$a}{height} <=> $data->{$b}{height} || $data->{$a}{width} <=> $data->{$b}{width} } keys %$data) {
                 <tr>
                     <td>
                         <% $file | h %>
