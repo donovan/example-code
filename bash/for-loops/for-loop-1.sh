@@ -2,5 +2,10 @@
 
 for group in sambashare admin lpadmin plugdev cdrom dialout adm
 do
-    echo group = $group;
+    if [ $group = 'admin' ]
+    then
+        continue; # bash equivalent of perl next
+    else
+        echo group = $group;
+    fi
 done
